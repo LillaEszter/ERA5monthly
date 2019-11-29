@@ -16,10 +16,12 @@ library(xts)
 fuzer <- xts(csapdata, aktdate)
 fuzer.mm <- fuzer * 1000
 apply.yearly(fuzer.mm, sum)*30
+fuzer.time <- index(fuzer.mm)
 fuzer.days <- as.numeric(diff(fuzer.time)) # napokká alakítás diff segítségével
 fuzer.days.ok <- c(fuzer.days, 30) # az utolsó április hozzáadva
 fuzer.mm.ok <- fuzer.mm * fuzer.days.ok # minden havi átlag megszorozva a hónap hosszával
 diff(fuzer.time)
 apply.yearly(fuzer.mm.ok, sum)
-plot(fuzer, main="Csapadék változása 2007-2019 Füzér és környéke",
+plot(fuzer.mm.ok, main="Csapadék változása 2007-2019 Füzér és környéke",
      xlab="idő", ylab="csapadék", type="o", col="orange")
+
