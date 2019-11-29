@@ -15,5 +15,6 @@ nc_close(csap)
 library(xts)
 fuzer <- xts(csapdata, aktdate)
 fuzer.mm <- fuzer * 1000
+apply.yearly(fuzer.mm, sum)*30
 plot(fuzer, main="Csapadék változása 2007-2019 Füzér és környéke",
      xlab="idő", ylab="csapadék", type="o", col="orange")
